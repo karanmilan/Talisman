@@ -26,7 +26,7 @@ if [ $# -eq 1 ]
       exit 0
     fi
 else
-  echo "The number of arguements provided to the script are incorrect"
+  echo "The number of arguements provided to the script are incorrect, please check https://github.com/karanmilan/talisman and see the Running Talisman section for the corect implementation"
   exit 0
 fi
 
