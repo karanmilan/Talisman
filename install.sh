@@ -7,7 +7,7 @@ set -euo pipefail
 
 if [ $# -eq 0 ]
   then
-    echo "Talisman supports two types of git-hooks, pre-push hook and the pre-commit hook.\nEither of them needs to be passed as the arguement to the script.\nThe script will now exit as no parameter is passed to the script.\nFor more details visit https://github.com/karanmilan/talisman and see the Running Talisman section."
+    echo "Talisman supports two types of git-hooks, pre-push hook and the pre-commit hook.\nEither of them needs to be passed as the argument to the script.\nThe script will now exit as no parameter is passed to the script.\nFor more details visit https://github.com/karanmilan/talisman and see the Running Talisman section."
     exit 0
 fi
 
@@ -26,7 +26,7 @@ if [ $# -eq 1 ]
       exit 0
     fi
 else
-  echo "The number of arguements provided to the script are incorrect, please check https://github.com/karanmilan/talisman and see the Running Talisman section for the corect implementation"
+  echo "The number of arguments provided to the script are incorrect, please check https://github.com/karanmilan/talisman and see the Running Talisman section for the correct implementation"
   exit 0
 fi
 
@@ -172,8 +172,8 @@ run() {
     # Support '~' in path
     TEMPLATE_DIR=${TEMPLATE_DIR/#\~/$HOME}
 
-    if [ -f "$TEMPLATE_DIR/hooks/pre-push" ]; then
-      echo_error "Oops, it looks like you already have a pre-push hook installed at '$TEMPLATE_DIR/hooks/pre-push'."
+    if [ -f "$TEMPLATE_DIR/hooks/$HOOK" ]; then
+      echo_error "Oops, it looks like you already have a $HOOK hook installed at '$TEMPLATE_DIR/hooks/$HOOK'."
       echo_error "Talisman is not compatible with other hooks right now, sorry."
       echo_error "If this is a problem for you, please open an issue: https://github.com/thoughtworks/talisman/issues/new"
       exit $E_HOOK_ALREADY_PRESENT
@@ -183,8 +183,8 @@ run() {
 
     download
 
-    cp $DOWNLOADED_BINARY "$TEMPLATE_DIR/hooks/pre-push"
-    chmod +x "$TEMPLATE_DIR/hooks/pre-push"
+    cp $DOWNLOADED_BINARY "$TEMPLATE_DIR/hooks/$HOOK"
+    chmod +x "$TEMPLATE_DIR/hooks/$HOOK"
     
     echo -ne $(tput setaf 2)
     echo "Talisman successfully installed."
