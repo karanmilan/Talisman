@@ -1,3 +1,5 @@
+This tool is forked from the original tool present on https://github.com/thoughtworks/talisman, small changes have been made to support the pre-commit hook.
+
 # Talisman
 
 Talisman is a tool to validate code changes that are to be pushed out
@@ -28,12 +30,12 @@ Talisman to be present in any new repository that you 'init' or
 'clone'.
 
 You could download the
-[Talisman binary](https://github.com/thoughtworks/talisman/releases)
+[Talisman binary](https://github.com/karanmilan/talisman/releases)
 manually and copy it into your project/template `hooks` directory --
 or you can use our `install.sh` script.
 
 ```bash
-curl https://thoughtworks.github.io/talisman/install.sh > ~/install-talisman.sh
+curl -l https://github.com/karanmilan/talisman/releases/download/v0.2.1/install-talisman.sh > ~/install-talisman.sh
 chmod +x ~/install-talisman.sh
 ```
 
@@ -44,16 +46,16 @@ template.
 ```bash
 # Install to a single project
 cd my-git-project
-~/install-talisman.sh
+~/install-talisman.sh hook-type  (hook type could be pre-push or pre-commit)
 ```
 
 ```bash
 # Install as a git hook template
 cd ~
-~/install-talisman.sh
+~/install-talisman.sh hook-type (hook type could be pre-push or pre-commit)
 ```
 
-From now on Talisman will run checks for obvious secrets automatically before each push:
+From now on Talisman will run checks for obvious secrets automatically before each push or commit depending on the hook provided to the installation script or binary copied:
 
 ```bash
 $ git push
