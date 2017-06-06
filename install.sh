@@ -7,9 +7,8 @@ set -euo pipefail
 
 if [ $# -eq 0 ]
   then
-    echo "Installing the pre-push hook which is default, to install the pre-commit hook please provide the "pre-commit" parameter to install-talisman shell script"
-    REPO_HOOK=".git/hooks/pre-push"
-    HOOK="pre-push"
+    echo "Talisman supports two types of git-hooks, pre-push hook and the pre-commit hook.\nEither of them needs to be passed as the arguement to the script.\nThe script will now exit as no parameter is passed to the script.\nFor more details visit https://github.com/karanmilan/talisman and see the Running Talisman section."
+    exit 0
 fi
 
 if [ $# -eq 1 ]
