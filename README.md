@@ -35,7 +35,7 @@ manually and copy it into your project/template `hooks` directory --
 or you can use our `install.sh` script.
 
 ```bash
-curl -l https://github.com/karanmilan/talisman/releases/download/v0.2.1/install-talisman.sh > ~/install-talisman.sh
+curl -L https://github.com/karanmilan/talisman/releases/download/v0.2.1/install-talisman.sh > ~/install-talisman.sh
 chmod +x ~/install-talisman.sh
 ```
 
