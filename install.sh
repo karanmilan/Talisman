@@ -213,7 +213,6 @@ run() {
             continue
         else
     	    cp $DOWNLOADED_BINARY "./$HOOK"
-    	    echo "./$HOOK"
             chmod +x "./$HOOK"
             cd
         fi
