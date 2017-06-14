@@ -64,9 +64,15 @@ run() {
     elif [[ "$(uname -s)" == "Darwin" ]]; then
       ARCHITECTURE="darwin"
     else
-      echo_error "Talisman currently only supports Linux and Darwin systems."
-      echo_error "If this is a problem for you, please open an issue: https://github.com/thoughtworks/talisman/issues/new"
-      exit $E_UNSUPPORTED_ARCH
+      echo "Do you use Windows machine[Y/N]"
+      read WINDOWS_CHOICE
+      if [ $WINDOWS_CHOICE -eq 'Y' ] || [ $WINDOWS_CHOICE -eq 'y' ]; then
+        ARCHITECTURE="windows"
+      else
+        echo_error "Talisman currently only supports x86 and x86_64 architectures."
+        echo_error "If this is a problem for you, please open an issue: https://github.com/thoughtworks/talisman/issues/new"
+        exit $E_UNSUPPORTED_ARCH
+      fi
     fi
 
     if [[ "$(uname -m)" = "x86_64" ]]; then
@@ -78,7 +84,7 @@ run() {
       echo_error "If this is a problem for you, please open an issue: https://github.com/thoughtworks/talisman/issues/new"
       exit $E_UNSUPPORTED_ARCH
     fi
-    
+
     echo $ARCHITECTURE
   }
 
@@ -101,6 +107,8 @@ run() {
     chmod 0700 $TMP_DIR
 
     ARCH_SUFFIX=$(binary_arch_suffix)
+
+
     
     curl --location --silent "${BINARY_BASE_URL}_${ARCH_SUFFIX}_${HOOK}" > $TMP_DIR/talisman
 
@@ -186,14 +194,37 @@ run() {
 
     cp $DOWNLOADED_BINARY "$TEMPLATE_DIR/hooks/$HOOK"
     chmod +x "$TEMPLATE_DIR/hooks/$HOOK"
-    
+
     echo -ne $(tput setaf 2)
     echo "Talisman successfully installed."
     echo -ne $(tput sgr0)
   }
 
+  install_to_all_existing_git_directories() {
+    echo "Installing in all existing git directories"
+    cd
+    LIST_OF_GIT_DIRECTORIES=($(find . -name .git -type d -prune 2>/dev/null))
+    for i in "${LIST_OF_GIT_DIRECTORIES[@]}"
+    do
+        echo "$i"
+        cd "$i/hooks/"
+        if [[ -x "$HOOK" ]] || [[ -x "$HOOK.exe" ]]; then
+            cd
+            continue
+        else
+    	    cp $DOWNLOADED_BINARY "./$HOOK"
+    	    echo "./$HOOK"
+            chmod +x "./$HOOK"
+            cd
+        fi
+    done
+  }
+
+
+
   if [ ! -d "./.git" ]; then
     install_to_git_templates
+    install_to_all_existing_git_directories
   else
     install_to_repo
   fi
