@@ -201,20 +201,21 @@ run() {
   }
 
   install_to_all_existing_git_directories() {
-    echo "Installing in all existing git directories"
-    cd
+    PARENT_DIRECTORY=($(pwd))
+    echo "Installing in all child git directories under $PARENT_DIRECTORY"
+    cd $PARENT_DIRECTORY
     LIST_OF_GIT_DIRECTORIES=($(find . -name .git -type d -prune 2>/dev/null))
     for i in "${LIST_OF_GIT_DIRECTORIES[@]}"
     do
         echo "$i"
         cd "$i/hooks/"
         if [[ -x "$HOOK" ]] || [[ -x "$HOOK.exe" ]]; then
-            cd
+            cd $PARENT_DIRECTORY
             continue
         else
     	    cp $DOWNLOADED_BINARY "./$HOOK"
             chmod +x "./$HOOK"
-            cd
+            cd $PARENT_DIRECTORY
         fi
     done
   }
