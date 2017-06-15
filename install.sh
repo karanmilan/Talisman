@@ -224,7 +224,10 @@ run() {
 
   if [ ! -d "./.git" ]; then
     install_to_git_templates
-    install_to_all_existing_git_directories
+    read -u1 -p "Do you want to install Talisman in all the child git directories of the current directory?(Y/n)" CHILD_DIRECTORY_INSTALLATION
+    if [[ $CHILD_DIRECTORY_INSTALLATION == 'Y' ]] || [[ $CHILD_DIRECTORY_INSTALLATION == 'y' ]]; then
+        install_to_all_existing_git_directories
+    fi
   else
     install_to_repo
   fi
