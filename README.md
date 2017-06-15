@@ -43,7 +43,7 @@ chmod +x ~/install-talisman.sh
 ```
 Windows users can use these instructions below
 ```bash
-curl -L https://github.com/karanmilan/talisman/releases/download/v0.2.1/install-talisman-windows.sh > ~/install-talisman.sh
+curl https://raw.githubusercontent.com/karanmilan/talisman/master/install-talisman-windows.sh > ~/install-talisman.sh
 ```
 
 If you run this script from inside a git repo, it will add Talisman to
