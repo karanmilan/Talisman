@@ -23,11 +23,13 @@ ideally, code that implements your ideas and suggestions!
 #### Running Talisman
 
 Talisman can either be installed into a single git repo, or as a
-[git hook template](https://git-scm.com/docs/git-init#_template_directory).
+[git hook template](https://git-scm.com/docs/git-init#_template_directory), which would let Talisman to be present in any new repository that you 'init' or 'clone' and install it to existing repositories of a parent directory.
 
 We recommend installing it as a git hook template, as that will cause
 Talisman to be present in any new repository that you 'init' or
 'clone'.
+
+To have Talisman present for all your git repositories of your local machine, run it from your root directory.
 
 You could download the
 [Talisman binary](https://github.com/karanmilan/talisman/releases)
@@ -59,6 +61,23 @@ cd my-git-project
 cd ~
 ~/install-talisman.sh hook-type (hook type could be pre-push or pre-commit)
 ```
+
+```bash
+# Install into all child directories of a parent Directory, would appear only if also installed as git-template
+Directory Structure
+--> Parent-directory
+	|
+	|
+	+-- Child-directory-1
+	|
+	|
+	+-- Child-directory-2
+	|
+	|
+	+-- Child-directory-3
+
+cd Parent-directory
+~/install-talisman.sh hook-type
 
 From now on Talisman will run checks for obvious secrets automatically before each push or commit depending on the hook provided to the installation script or binary copied:
 
