@@ -38,7 +38,7 @@ or you can use our `install.sh` script.
 
 Linux and Mac users can use the instructions below
 ```bash
-curl -L https://github.com/karanmilan/talisman/releases/download/v0.2.1/install.sh > ~/install-talisman.sh
+curl https://raw.githubusercontent.com/karanmilan/talisman/master/install.sh > ~/install-talisman.sh
 chmod +x ~/install-talisman.sh
 ```
 Windows users can use these instructions below
