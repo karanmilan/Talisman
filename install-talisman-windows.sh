@@ -96,7 +96,7 @@ run() {
 
     ARCH_SUFFIX=$(binary_arch_suffix)
     
-    curl --location --silent "${BINARY_BASE_URL}_${ARCH_SUFFIX}_${HOOK}" > $TMP_DIR/talisman.exe
+    curl --location --silent "${BINARY_BASE_URL}_${ARCH_SUFFIX}_${HOOK}.exe" > $TMP_DIR/talisman.exe
     echo "${BINARY_BASE_URL}_${ARCH_SUFFIX}_${HOOK}"
 
     DOWNLOADED_BINARY="$TMP_DIR/talisman.exe"
