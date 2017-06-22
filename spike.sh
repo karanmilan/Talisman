@@ -23,7 +23,7 @@ if [ $# -eq 0 ]
         then
           HOOK="pre-commit"
    else
-     printf "The number or type of arguements provided to the script are incorrect, please check https://github.com/karanmilan/talisman and see the Running Talisman section for the correct implementation.\nTalisman only supports either pre-push or pre-commit hooks"
+     printf "The type of arguments provided to the script are incorrect, please check https://github.com/karanmilan/talisman and see the Running Talisman section for the correct implementation.\nTalisman only supports either pre-push or pre-commit hooks"
      exit 8
    fi
 
