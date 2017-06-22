@@ -176,8 +176,8 @@ run() {
 
     download
 
-    cp $DOWNLOADED_BINARY "$TEMPLATE_DIR/hooks/$HOOK"
-    chmod +x "$TEMPLATE_DIR/hooks/$HOOK"
+    cp $DOWNLOADED_BINARY "$TEMPLATE_DIR/hooks/$HOOK.exe"
+    chmod +x "$TEMPLATE_DIR/hooks/$HOOK.exe"
     
     echo -ne $(tput setaf 2)
     echo "Talisman successfully installed."
@@ -197,8 +197,8 @@ run() {
             cd $PARENT_DIRECTORY
             continue
         else
-    	    cp $DOWNLOADED_BINARY "./$HOOK"
-            chmod +x "./$HOOK"
+    	    cp $DOWNLOADED_BINARY "./$HOOK.exe"
+            chmod +x "./$HOOK.exe"
             cd $PARENT_DIRECTORY
         fi
     done
