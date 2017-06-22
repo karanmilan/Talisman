@@ -27,7 +27,7 @@ if [ $# -eq 0 ]
      exit 8
    fi
 
-  REPO_HOOK=".git/hooks/$(check_hook_type).exe"
+  REPO_HOOK=".git/hooks/$HOOK.exe"
 
 run() {
 
